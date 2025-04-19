@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="botao">Clique aqui</button>
+    <p id="pstring"></p>
+    <p id="pnumber"></p>
+    <p id="pbooleno"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+    <p id="pobject"></p>
+    <p id="parray"></p>
+
+    <p id="explicacoes"></p>
+
+
+    <script>
+        var botao = document.getElementById("botao");
+        botao.addEventListener("click", clicou)
+
+
+
+
+        function clicou() {
+            var vstring = "String";
+            var vnumber = 5;
+            var vbooleano = true;
+            var v;
+            var vnull = null;
+            var vobject = {};
+            var varray = [];
+
+            document.getElementById("pstring").innerHTML = typeof (vstring);
+            document.getElementById("pnumber").innerHTML = typeof (vnumber);
+            document.getElementById("pbooleno").innerHTML = typeof (vbooleano);
+            document.getElementById("pundefined").innerHTML = typeof (v);
+            document.getElementById("pnull").innerHTML = typeof (vnull);
+            document.getElementById("pobject").innerHTML = typeof (vobject);
+            document.getElementById("parray").innerHTML = typeof (varray);
+
+            console.log("String + int: ", r1 = vstring + vnumber);
+            console.log("Booleano + int: ", r2 = vbooleano + vnumber);
+            console.log("Array + int: ", r3 = varray + vnumber);
+            console.log("String + Object: ", r4 = vstring + vobject);
+
+
+            document.getElementById("explicacoes").innerHTML =
+                "A soma de string e número deu <b>" + r1 +
+                "</b> porque, ao somar com uma string, o JavaScript converte tudo para texto e apenas junta os valores. <br/>" +
+                "A soma do número e booleano deu <b>" + r2 +
+                "</b> porque o booleano é convertido em número: true vira 1 e false vira 0. <br/>" +
+                "A soma do array e número deu <b>" + r3 +
+                "</b> porque o array é convertido em string e a operação resulta em uma concatenação de texto. <br/>" + 
+                "A soma de string e objeto deu <b>" + r4 +
+                "</b> porque o objeto é convertido em string automaticamente, e vira '[object Object]', então o resultado é uma concatenação.";
+
+        }
+    </script>
+
+
+</body>
+
+</html>
