@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo">O que é JavaScript?</title>
+    
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial;
+            margin: 40px;
+            
+        }
+        #tituloH1 {
+            color: rgb(177, 20, 46);
+            font-size: 45px;
+            text-align: center;
+        }
+        #explicacao{
+            font-size: 14px;
+            text-align: justify;
+            margin: 20px;
+        }
+        #hora{
+            font-size: 20px;
+            text-align: center;
+            margin: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="tituloH1">O que é JavaScript?</h1>
+    <p id="explicacao">
+        <b>A motivação para a criação do JavaScript:</b>
+                O JavaScript foi criado em 1995 com o objetivo de tornar as páginas da web mais dinâmicas e interativas. Ele permite que ações sejam realizadas diretamente no navegador, como responder a cliques e mudar elementos da página sem precisar recarregá-la completamente. <br> <br>
+                <b> A diferença entre execução no navegador e no servidor:</b>
+                No navegador (lado do cliente), o JavaScript é usado para interagir com o usuário e modificar a interface da página em tempo real. No servidor, com tecnologias como Node.js, ele é usado para processar dados, acessar bancos de dados e responder a requisições. A principal diferença é que no navegador o foco é na experiência do usuário, enquanto no servidor é na lógica de funcionamento do sistema. <br> <br>
+                <b>O conceito de sandbox no navegador:</b>
+                Quando o JavaScript é executado no navegador, ele roda dentro de uma "sandbox", que é um ambiente isolado e seguro. Isso impede que ele tenha acesso direto ao sistema do usuário, protegendo contra possíveis ações maliciosas. <br> <br>
+                <b>Objetos globais como document, console e alert:</b>
+                Durante a execução no navegador, o JavaScript tem acesso a alguns objetos globais importantes: <br>
+                <b>document:</b>  permite acessar e modificar o conteúdo da página HTML. <br>
+                <b>console: </b>usado para exibir mensagens no console do navegador, útil para testes e depuração. <br>
+                <b>alert: </b>exibe uma caixa de mensagem na tela para o usuário. <br>
+
+    </p>
+    <p id="hora"></p>
+
+    <script>
+        console.log("Página sobre Java Script carregada.");
+        alert("Bem-vindo à página sobre JavaScript!");
+
+        pdata = document.getElementById("hora")
+        setInterval(atualizaHora, 1)
+        function atualizaHora(){
+            d = new Date()
+
+            pdata.innerHTML = `Hora atual: ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+        }  
+    </script>
+</body>
+</html>
