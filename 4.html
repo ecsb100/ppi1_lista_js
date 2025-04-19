@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Números</title>
+</head>
+<body>
+    <h1>Sorteio de Números</h1>
+    <input type="number" id="min" placeholder="Valor mínimo">
+    <input type="number" id="max" placeholder="Valor máximo">
+    <button id="sortear">Sortear</button>
+    <p id="resultado"></p>
+    <p id="quantidade"></p>
+
+    <script>
+        var numerosSorteados = [];
+
+        function sortear() {
+            if (document.getElementById("min").value === '' || document.getElementById("max").value === '') {
+               alert("Preencha todos os campos");
+                return;
+            }
+            var min = parseInt(document.getElementById("min").value);
+            var max = parseInt(document.getElementById("max").value);
+            
+            if (min >= max) {
+                alert("O valor mínimo deve ser menor que o valor máximo.");
+                return;
+            }
+
+            var numeroAleatorio = Math.floor(Math.random() * (max - min + 1) + min);
+            document.getElementById("resultado").innerText = "Número sorteado: " + numeroAleatorio;
+
+
+            var numeroExistente = numerosSorteados.find(obj => obj.numero === numeroAleatorio);
+            if (numeroExistente) {
+                document.getElementById("quantidade").innerText = "Número sorteado " + (numeroExistente.contador + 1) + " vezes";
+                numeroExistente.contador++;
+            } else {
+                document.getElementById("quantidade").innerText = "Número sorteado 1 vez";
+                numerosSorteados.push({ numero: numeroAleatorio, contador: 1 });
+            }
+
+        }
+
+        document.getElementById("sortear").addEventListener("click", sortear);
+    </script>
+</body>
+</html>
