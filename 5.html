@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeros primos</title>
+</head>
+
+<body>
+    <h1>Números primos</h1>
+    <input type="number" id="inicio" placeholder="Valor inicial">
+    <input type="number" id="fim" placeholder="Valor final">
+    <button id="verificar">Verificar</button>
+    <p id="resultadoPrimos"></p>
+
+    <script>
+        function calcular() {
+            if (document.getElementById("inicio").value === '' || document.getElementById("fim").value === '') {
+                alert("Preencha todos os campos");
+                return;
+            }
+            var valorInicial = parseInt(document.getElementById("inicio").value);
+            var valorFinal = parseInt(document.getElementById("fim").value);
+
+            var resultado = "Números primos entre " + valorInicial + " e " + valorFinal + ": ";
+            for (var i = valorInicial; i <= valorFinal; i++) {
+                if (ehPrimo(i)) {
+                    resultado += i + " ";
+                }
+            }
+            document.getElementById("resultadoPrimos").innerText = resultado;
+        }
+
+        function ehPrimo(num) {
+            if (num <= 1) return false;
+            for (var i = 2; i < num; i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        document.getElementById("Verificar").addEventListener("click", calcular);
+    </script>
+</body>
+
+</html>
