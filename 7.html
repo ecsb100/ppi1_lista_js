@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="botao">Clique aqui</button>
+    <script>
+        function trocarCorFundo() {
+            document.body.style.backgroundColor = `#${randColorHex()}${randColorHex()}${randColorHex()}`;
+        }
+
+        function randColorHex(){
+            return Math.trunc(Math.random()*255).toString(16)
+        }
+
+        document.getElementById("botao").addEventListener("click", trocarCorFundo);
+    </script>
+
+</body>
+
+</html>
