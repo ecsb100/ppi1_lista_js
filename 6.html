@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Palíndromo</h1>
+    <input id="palavra" placeholder="Palavra">
+    <button id="verificar">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function verificar() {
+            var palavra = document.getElementById("palavra").value;
+            if (palavra == '') {
+                alert("Preencha o campo");
+                return;
+            }
+            var resultado = ehPalindromo(palavra) ;
+            document.getElementById("resultado").innerText = resultado;
+        }
+
+        function ehPalindromo(palavra) {
+            var palavraInvertida = palavra.split('').reverse().join('');
+            if (palavra === palavraInvertida) {
+                return "A palavra é um palíndromo.";
+            } else {
+                return "A palavra não é um palíndromo.";
+            }
+        }
+
+        document.getElementById("verificar").addEventListener("click", verificar);
+    </script>
+</body>
+</html>
