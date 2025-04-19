@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .colorida {
+            display: flex;
+            width: 20%;
+            height: 200px;
+        }
+
+        #div01 {
+            background-color: #05668D;
+        }
+
+        #div02 {
+            background-color: #427AA1;
+        }
+
+        #div03 {
+            background-color: #EBF2FA;
+        }
+
+        #div04 {
+            background-color: #679436;
+        }
+
+        #div05 {
+            background-color: #A5BE00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="colorida" id="div01"></div>
+        <div class="colorida" id="div02"></div>
+        <div class="colorida" id="div03"></div>
+        <div class="colorida" id="div04"></div>
+        <div class="colorida" id="div05"></div>
+    </div>
+
+    <script>
+        //sempre que precionar spacebar trocar a dor das divs
+        document.addEventListener('keypress', apertou);
+
+        function apertou (event) {
+            if (event.code === 'Space') {
+                document.getElementById("div01").style.backgroundColor = gerarCor();
+                document.getElementById("div02").style.backgroundColor = gerarCor();
+                document.getElementById("div03").style.backgroundColor = gerarCor();
+                document.getElementById("div04").style.backgroundColor = gerarCor();
+                document.getElementById("div05").style.backgroundColor = gerarCor();
+            }
+        }
+
+        function gerarCor() {
+            return `#${randColorHex()}${randColorHex()}${randColorHex()}`;
+        }
+
+        function randColorHex(){
+            return Math.trunc(Math.random()*255).toString(16)
+        }
+    </script>
+</body>
+
+</html>
