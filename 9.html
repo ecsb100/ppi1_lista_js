@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+    
+        .calculadora {
+          background: black;
+          width: 260px;
+        }
+    
+        .tela {
+          background: black;
+          color: white;
+          font-size: 40px;
+          text-align: right;
+          padding: 20px;
+        }
+    
+        .botoes {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          border: 1px solid black;
+        }
+    
+        button {
+          padding: 20px;
+          background: white;
+          border: 1px solid black;
+        }
+    
+        button:hover {
+          background: white;
+        }
+    
+   
+        .igual {
+          background: darkorange;
+          color: white;
+          grid-row: span 4;
+        }
+    
+      </style>
+</head>
+<body>
+    <div class="calculadora">
+        <div class="tela" id="tela">0</div>
+        <div class="botoes">
+          <button>+</button>
+          <button>-</button>
+          <button>x</button>
+          <button>÷</button>
+    
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button class="igual">=</button>
+    
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+    
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+    
+          <button>0</button>
+          <button>.</button>
+          <button>AC</button>
+        </div>
+      </div>
+
+      <script>
+        var tela = document.getElementById('tela');
+        var botoes = document.querySelectorAll('button');
+      
+        var operacaoAtual = '';
+        var valorAnterior = '';
+        var operador = '';
+      
+        botoes.forEach(botao => {
+          botao.addEventListener('click', () => {
+            var valor = botao.textContent;
+            if (valor == 'AC') {
+              operacaoAtual = '';
+              valorAnterior = '';
+              operador = '';
+              tela.textContent = '0';
+            } else if (valor == '=') {
+              if (valorAnterior != '' && operacaoAtual != '' && operador != '') {
+                var resultado = calcular(Number(valorAnterior), Number(operacaoAtual), operador);
+                tela.textContent = resultado;
+                operacaoAtual = resultado.toString();
+                valorAnterior = '';
+                operador = '';
+              }
+            } else if (valor == '+' || valor == '-' || valor == 'x' || valor == '÷') {
+              if (operacaoAtual) {
+                valorAnterior = operacaoAtual;
+                operacaoAtual = '';
+                operador = valor;
+              }
+            } else {
+              operacaoAtual += valor;
+              tela.textContent = operacaoAtual;
+            }
+          });
+        });
+      
+        function calcular(a, b, operador) {
+          switch (operador) {
+            case '+':
+              return a + b;
+            case '-':
+              return a - b;
+            case 'x':
+              return a * b;
+            case '÷':
+              return a / b;
+            default:
+              return 0;
+          }
+        }
+      </script>
+</body>
+</html>
