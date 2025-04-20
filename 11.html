@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nameInput" placeholder="Digite seu nome">
+    <button id="saveButton">Salvar</button>
+    <p id="greeting"></p>
+
+    <script>
+        document.getElementById("saveButton").addEventListener("click", function() {
+            var nome = document.getElementById("nameInput").value;
+            if(nome == '') {
+                alert("Preencha o nome");
+                return;
+            }
+            localStorage.setItem("nome", nome);
+            var nomeSalvo = localStorage.getItem("nome");
+            document.getElementById("greeting").innerText = "Olá, " + nomeSalvo + "!";
+        });
+    </script>
+  </body>
+</html>
